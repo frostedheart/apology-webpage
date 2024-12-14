@@ -10,7 +10,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
-            background: url('https://images.unsplash.com/photo-1568820858-3bc90f9c57c8') no-repeat center center fixed;
+            background: url('https://images.unsplash.com/photo-1506765515456-e0cb3e5d162b') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -22,7 +22,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
         }
 
         .screen.active {
@@ -71,10 +70,15 @@
         .audio {
             display: none;
         }
+
+        .dog-garden {
+            background: url('https://images.unsplash.com/photo-1586940133033-3fd7e69adf2b') no-repeat center center fixed;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
-    <!-- First Screen -->
+    <!-- Screen 1: GIF with Start Button -->
     <div id="screen1" class="screen active">
         <div>
             <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" class="centered-iframe" frameborder="0" allowfullscreen></iframe>
@@ -83,12 +87,30 @@
         </div>
     </div>
 
-    <!-- Second Screen -->
+    <!-- Screen 2: Apology Message -->
     <div id="screen2" class="screen">
         <div>
             <h1>I'm Sorry, Raaji</h1>
             <p>I truly value you, and I was wrong in how I spoke to you.</p>
             <button class="go-back" id="goBackButton">Go Back</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: Dog & Garden -->
+    <div id="screen3" class="screen dog-garden">
+        <div>
+            <h1>Gardening & Dogs</h1>
+            <p>These things always bring me joy when I'm thinking about you.</p>
+            <button class="button" id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <!-- Screen 4: Final Apology -->
+    <div id="screen4" class="screen">
+        <div>
+            <h1>Final Words</h1>
+            <p>I care about you so much, and I will always support you.</p>
+            <button class="go-back" id="goBackButton2">Go Back</button>
         </div>
     </div>
 
@@ -103,29 +125,41 @@
         const audio = document.getElementById('audio');
         const screen1 = document.getElementById('screen1');
         const screen2 = document.getElementById('screen2');
+        const screen3 = document.getElementById('screen3');
+        const screen4 = document.getElementById('screen4');
         const goBackButton = document.getElementById('goBackButton');
+        const goBackButton2 = document.getElementById('goBackButton2');
+        const nextButton = document.getElementById('nextButton');
 
-        // Play audio when start button is clicked
-        startButton.addEventListener('click', () => {
-            audio.currentTime = 4; // Start audio at 4 seconds
+        // Play audio automatically at 4 seconds when page loads
+        window.onload = () => {
+            audio.currentTime = 4; // Start the audio at 4 seconds
             audio.play();
+        };
+
+        // Start button - Move to next screen
+        startButton.addEventListener('click', () => {
             screen1.classList.remove('active');
             screen2.classList.add('active');
         });
 
-        // Go back to the first screen
+        // Go Back button (from screen 2) - Return to screen 1
         goBackButton.addEventListener('click', () => {
             screen2.classList.remove('active');
             screen1.classList.add('active');
         });
 
-        // Auto-start the audio when the page loads (with a 1-second delay to make sure it's ready)
-        window.onload = () => {
-            setTimeout(() => {
-                audio.currentTime = 4; // Start audio at 4 seconds
-                audio.play();
-            }, 1000); // Wait for 1 second before starting the audio
-        };
+        // Next button - Move to screen 3
+        nextButton.addEventListener('click', () => {
+            screen3.classList.add('active');
+            screen2.classList.remove('active');
+        });
+
+        // Go Back button (from screen 4) - Return to screen 3
+        goBackButton2.addEventListener('click', () => {
+            screen4.classList.remove('active');
+            screen3.classList.add('active');
+        });
     </script>
 </body>
 </html>
