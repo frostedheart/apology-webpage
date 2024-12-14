@@ -94,10 +94,11 @@
         }
 
         /* Start Screen Styling */
-        #startScreen iframe {
+        #startScreen img {
             width: 100%;
-            height: 80%;
-            border: none;
+            height: auto;
+            max-width: 600px;
+            border-radius: 10px;
         }
 
         .start-button {
@@ -120,10 +121,7 @@
 
     <!-- Start Screen with Pigeon GIF -->
     <div id="startScreen" class="screen active">
-        <div style="width:100%;height:0;padding-bottom:57%;position:relative;">
-            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-        </div>
-        <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf" target="_blank">via GIPHY</a></p>
+        <img src="https://media.giphy.com/media/xUPGcD1LZ1u8jZLgU4/giphy.gif" alt="Pigeon GIF" />
         <button class="start-button" onclick="startSong()">Start</button>
     </div>
 
@@ -152,7 +150,7 @@
         <div class="image-container">
             <img src="https://www.rd.com/wp-content/uploads/2020/10/GettyImages-1161263633.jpg" alt="Cute Dog" class="cute-dog" />
         </div>
-        <button class="button" onclick="showScreen('screen1')">Go Back</button>
+        <button class="button" onclick="showScreen('startScreen')">Go Back</button>
     </div>
 
     <div class="footer">
@@ -170,7 +168,7 @@
 
         function startSong() {
             // Play the song (Smithereens by Twenty One Pilots)
-            const audio = new Audio('https://www.youtube.com/watch?v=HYzFq4o5xtI');  // Link to the song (change this to the appropriate music file link)
+            const audio = new Audio('<iframe width="940" height="529" src="https://www.youtube.com/embed/v8GwUos_Mtw" title="twenty one pilots - Smithereens (Official Audio)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>');  // Placeholder audio file
             audio.play();
 
             // Transition to next screen after the song starts playing
