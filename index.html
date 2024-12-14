@@ -59,7 +59,15 @@
   }
 
   #screen1 {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #screen1 video {
+    max-width: 100%;
+    height: auto;
   }
 
   #screen2, #screen3 {
@@ -82,7 +90,9 @@
 
 <div class="screen active" id="screen1">
   <div class="screen-content">
-    <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <video src="2.mp4" autoplay muted loop playsinline>
+      Your browser does not support the video tag.
+    </video>
     <button onclick="startAndShowScreen()">Start</button> 
     <audio id="myAudio" src="1.mp3" preload="metadata"></audio> 
   </div>
