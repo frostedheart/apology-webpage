@@ -61,13 +61,15 @@
   #screen1 {
     background-color: #f0f0f0; 
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
   }
 
   #screen1 video {
-    max-width: 100%;
+    max-width: 90%; 
     height: auto;
+    max-height: 50vh; 
   }
 
   #screen2, #screen3 {
@@ -87,62 +89,59 @@
 </style>
 </head>
 <body>
-
-<div class="screen active" id="screen1">
-  <div class="screen-content">
-    <video src="2.mp4" autoplay muted loop playsinline>
-      Your browser does not support the video tag.
-    </video>
-    <button onclick="startAndShowScreen()">Start</button> 
-    <audio id="myAudio" src="1.mp3" preload="metadata"></audio> 
+  <div class="screen active" id="screen1">
+    <div class="screen-content">
+      <video src="2.mp4" autoplay loop playsinline> </video>
+      <button onclick="startAndShowScreen()">Start</button> 
+      <audio id="myAudio" src="1.mp3" preload="metadata"></audio> 
+    </div>
   </div>
-</div>
 
-<div class="screen" id="screen2">
-  <div class="screen-content">
-    <h1>I'm Truly Sorry, Raaji</h1>
-    <p>I messed up and I deeply regret hurting you with my insensitive words yesterday. I understand how much pain you're in, and I should have been more supportive.</p>
-    <button onclick="showScreen('screen3')">Next</button>
+  <div class="screen" id="screen2">
+    <div class="screen-content">
+      <h1>I'm Truly Sorry, Raaji</h1>
+      <p>I messed up and I deeply regret hurting you with my insensitive words yesterday. I understand how much pain you're in, and I should have been more supportive.</p>
+      <button onclick="showScreen('screen3')">Next</button>
+    </div>
   </div>
-</div>
 
-<div class="screen" id="screen3">
-  <div class="screen-content">
-    <h1>You Mean the World to Me</h1>
-    <p>I cherish our friendship more than words can say. You're an amazing person, and I'm so lucky to have you in my life.</p>
-    <button onclick="showScreen('screen4')">Next</button>
+  <div class="screen" id="screen3">
+    <div class="screen-content">
+      <h1>You Mean the World to Me</h1>
+      <p>I cherish our friendship more than words can say. You're an amazing person, and I'm so lucky to have you in my life.</p>
+      <button onclick="showScreen('screen4')">Next</button>
+    </div>
   </div>
-</div>
 
-<div class="screen" id="screen4">
-  <div class="screen-content">
-    <h1>Our Memories</h1>
-    <p>Here are some of my favorite memories with you. They always bring a smile to my face.</p>
-    <img src="memory1.jpg" alt="Memory 1"> 
-    <img src="memory2.jpg" alt="Memory 2"> 
-    <button onclick="showScreen('screen1')">Go Back</button> </div>
-</div>
+  <div class="screen" id="screen4">
+    <div class="screen-content">
+      <h1>Our Memories</h1>
+      <p>Here are some of my favorite memories with you. They always bring a smile to my face.</p>
+      <img src="memory1.jpg" alt="Memory 1"> 
+      <img src="memory2.jpg" alt="Memory 2"> 
+      <button onclick="showScreen('screen1')">Go Back</button> 
+    </div>
+  </div>
 
-<script>
-  const audio = document.getElementById('myAudio');
-  audio.play().then(() => {
-    audio.pause();
-    audio.currentTime = 4; 
-  });
+  <script>
+    const audio = document.getElementById('myAudio');
+    audio.play().then(() => {
+      audio.pause();
+      audio.currentTime = 4; 
+    });
 
-  function showScreen(screenId) {
-    const activeScreen = document.querySelector('.screen.active');
-    activeScreen.classList.remove('active');
+    function showScreen(screenId) {
+      const activeScreen = document.querySelector('.screen.active');
+      activeScreen.classList.remove('active');
 
-    const nextScreen = document.getElementById(screenId);
-    nextScreen.classList.add('active');
-  }
+      const nextScreen = document.getElementById(screenId);
+      nextScreen.classList.add('active');
+    }
 
-  function startAndShowScreen() {
-    audio.play(); 
-    showScreen('screen2'); 
-  }
-</script>
-
+    function startAndShowScreen() {
+      audio.play(); 
+      showScreen('screen2'); 
+    }
+  </script>
 </body>
 </html>
