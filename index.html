@@ -94,11 +94,10 @@
         }
 
         /* Start Screen Styling */
-        #startScreen img {
-            width: 100%;
-            height: auto;
-            max-width: 600px;
-            border-radius: 10px;
+        #startScreen iframe {
+            width: 480px;
+            height: 274px;
+            border: none;
         }
 
         .start-button {
@@ -121,7 +120,10 @@
 
     <!-- Start Screen with Pigeon GIF -->
     <div id="startScreen" class="screen active">
-        <img src="https://media.giphy.com/media/xUPGcD1LZ1u8jZLgU4/giphy.gif" alt="Pigeon GIF" />
+        <div style="width:100%;height:0;padding-bottom:57%;position:relative;">
+            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </div>
+        <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
         <button class="start-button" onclick="startSong()">Start</button>
     </div>
 
@@ -167,9 +169,15 @@
         }
 
         function startSong() {
-            // Play the song (Smithereens by Twenty One Pilots)
-            const audio = new Audio('https://soundcloud.com/matt-link-484382892/twenty-one-pilots-smithereens-remix?in=nkosi-wkkwkw/sets/lilli-3&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing');  // Placeholder audio file
-            audio.play();
+            // Create a SoundCloud iframe embed for the song
+            const audioEmbed = document.createElement('iframe');
+            audioEmbed.setAttribute('width', '100%');
+            audioEmbed.setAttribute('height', '166');
+            audioEmbed.setAttribute('scrolling', 'no');
+            audioEmbed.setAttribute('frameborder', 'no');
+            audioEmbed.setAttribute('allow', 'autoplay');
+            audioEmbed.setAttribute('src', 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmatt-link-484382892%2Ftwenty-one-pilots-smithereens-remix%3Fin%3Dnkosi-wkkwkw%2Fsets%2Flilli-3%26utm_source%3Dclipboard%26utm_medium%3Dtext%26utm_campaign%3Dsocial_sharing&color=%23ff6347&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true');
+            document.body.appendChild(audioEmbed);
 
             // Transition to next screen after the song starts playing
             setTimeout(() => {
