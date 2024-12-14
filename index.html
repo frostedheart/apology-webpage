@@ -124,7 +124,7 @@
             <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
         </div>
         <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
-        <button class="start-button" onclick="startSong()">Start</button>
+        <button class="start-button" onclick="showScreen('screen1')">Start</button>
     </div>
 
     <!-- Screen 1: Apology Message -->
@@ -160,7 +160,16 @@
     </div>
 
     <script>
+        let audio = new Audio('1.mp3'); // Reference to the audio file
         let audioPlayed = false; // Track if the song has been played
+
+        // When the page loads, automatically start the song from 2 seconds
+        window.onload = function() {
+            audio.currentTime = 2;  // Start from 2 seconds
+            audio.play(); // Play the song
+            audio.loop = false; // Prevent the song from looping
+            audioPlayed = true; // Mark as played
+        };
 
         function showScreen(screenId) {
             const screens = document.querySelectorAll('.screen');
@@ -168,26 +177,6 @@
                 screen.classList.remove('active');
             });
             document.getElementById(screenId).classList.add('active');
-        }
-
-        function startSong() {
-            if (!audioPlayed) {
-                // Create an audio element for the local mp3 file
-                const audio = document.createElement('audio');
-                audio.setAttribute('controls', 'false');
-                audio.setAttribute('autoplay', 'true');
-                audio.setAttribute('loop', 'false');
-                audio.innerHTML = '<source src="1.mp3" type="audio/mp3">';
-                document.body.appendChild(audio);
-                
-                // Set flag to prevent multiple plays
-                audioPlayed = true;
-            }
-
-            // Transition to next screen after the song starts playing
-            setTimeout(() => {
-                showScreen('screen1');
-            }, 3000); // Adjust time based on when you want the next screen to appear
         }
     </script>
 
