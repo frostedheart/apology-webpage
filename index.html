@@ -124,7 +124,7 @@
             <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
         </div>
         <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
-        <button class="start-button" onclick="showScreen('screen1')">Start</button>
+        <button class="start-button" onclick="startAudioAndShowScreen('screen1')">Start</button>
     </div>
 
     <!-- Screen 1: Apology Message -->
@@ -163,14 +163,18 @@
         let audio = new Audio('1.mp3'); // Reference to the audio file
         let audioPlayed = false; // Track if the song has been played
 
-        // When the page loads, automatically start the song from 2 seconds
-        window.onload = function() {
-            audio.currentTime = 2;  // Start from 2 seconds
-            audio.play(); // Play the song
-            audio.loop = false; // Prevent the song from looping
-            audioPlayed = true; // Mark as played
-        };
+        // Function to start audio immediately on clicking 'Start' and move to next screen
+        function startAudioAndShowScreen(screenId) {
+            if (!audioPlayed) {
+                audio.currentTime = 4;  // Start from 4 seconds
+                audio.play(); // Play the song
+                audio.loop = false; // Prevent the song from looping
+                audioPlayed = true; // Mark as played
+            }
+            showScreen(screenId);
+        }
 
+        // Function to show the respective screen
         function showScreen(screenId) {
             const screens = document.querySelectorAll('.screen');
             screens.forEach(screen => {
