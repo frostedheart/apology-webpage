@@ -3,186 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology for Raaji</title>
+    <title>Apology Webpage</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            color: #FF6347;
-            margin: 20px 0;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #444;
-            line-height: 1.5;
-            margin: 20px 0;
-        }
-
-        .image-container {
-            margin: 30px 0;
-        }
-
-        .button {
-            background-color: #FF6347;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 30px;
-        }
-
-        .button:hover {
-            background-color: #FF4500;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: url('https://images.unsplash.com/photo-1568820858-3bc90f9c57c8') no-repeat center center fixed;
+            background-size: cover;
         }
 
         .screen {
             display: none;
             width: 100%;
-            max-width: 800px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .screen.active {
+            display: flex;
+        }
+
+        .centered-iframe {
+            margin: auto;
             display: block;
+            max-width: 100%;
+            max-height: 80%;
         }
 
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .footer a {
-            color: #FF6347;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Pigeon and Dog Animations */
-        @keyframes floatAnimation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
-        }
-
-        .floating {
-            animation: floatAnimation 2s ease-in-out infinite;
-        }
-
-        .cute-dog {
-            max-width: 60%;
-            border-radius: 20px;
-        }
-
-        /* Start Screen Styling */
-        #startScreen iframe {
-            width: 480px;
-            height: 274px;
+        .button {
+            background-color: #4CAF50;
             border: none;
-        }
-
-        .start-button {
-            background-color: #FF6347;
             color: white;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border-radius: 10px;
         }
 
-        .start-button:hover {
-            background-color: #FF4500;
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .go-back {
+            background-color: #f44336;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .go-back:hover {
+            background-color: #e60000;
+        }
+
+        .audio {
+            display: none;
         }
     </style>
 </head>
 <body>
-
-    <!-- Start Screen with Pigeon GIF -->
-    <div id="startScreen" class="screen active">
-        <div style="width:100%;height:0;padding-bottom:57%;position:relative;">
-            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <div id="screen1" class="screen active">
+        <div>
+            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" class="centered-iframe" frameborder="0" allowfullscreen></iframe>
+            <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
+            <button class="button" id="startButton">Start</button>
         </div>
-        <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
-        <button class="start-button" onclick="startAudioAndShowScreen('screen1')">Start</button>
     </div>
 
-    <!-- Screen 1: Apology Message -->
-    <div id="screen1" class="screen">
-        <h1>Raaji, I'm So Sorry</h1>
-        <p>Hey love, I know I messed up, and I want to sincerely apologize. I was trying to comfort you when I said something that hurt you, and I never meant to cause you any more pain.</p>
-        <p>You mean so much to me, and I promise to be more thoughtful with my words in the future.</p>
-        <button class="button" onclick="showScreen('screen2')">Next</button>
-    </div>
-
-    <!-- Screen 2: Cute Pigeon Image and Message -->
     <div id="screen2" class="screen">
-        <h1>You're My Heart</h1>
-        <p>Even when things are tough, I'm here for you. I care about you deeply, and I'm sorry if I made you feel otherwise.</p>
-        <div class="image-container">
-            <img src="https://i.pinimg.com/originals/f6/62/73/f66273b69807531c6ac6ae12d576b42a.jpg" alt="Pigeon" class="floating" />
+        <div>
+            <h1>I'm Sorry, Raaji</h1>
+            <p>I truly value you, and I was wrong in how I spoke to you.</p>
+            <button class="go-back" id="goBackButton">Go Back</button>
         </div>
-        <button class="button" onclick="showScreen('screen3')">Next</button>
     </div>
 
-    <!-- Screen 3: Final Apology and Promise -->
-    <div id="screen3" class="screen">
-        <h1>Always Here For You</h1>
-        <p>I know I can't take back what I said, but I promise I will be better. Please let me be the person you can always turn to. I love you, and I just want to make things right.</p>
-        <div class="image-container">
-            <img src="https://www.rd.com/wp-content/uploads/2020/10/GettyImages-1161263633.jpg" alt="Cute Dog" class="cute-dog" />
-        </div>
-        <button class="button" onclick="showScreen('startScreen')">Go Back</button>
-    </div>
-
-    <div class="footer">
-        <p>Made with <span style="color: red;">❤️</span> for you, Raaji. <a href="https://vercel.com" target="_blank">Vercel Hosting</a></p>
-    </div>
+    <audio id="audio" class="audio" preload="auto">
+        <source src="1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
-        let audio = new Audio('1.mp3'); // Reference to the audio file
-        let audioPlayed = false; // Track if the song has been played
+        const startButton = document.getElementById('startButton');
+        const audio = document.getElementById('audio');
+        const screen1 = document.getElementById('screen1');
+        const screen2 = document.getElementById('screen2');
+        const goBackButton = document.getElementById('goBackButton');
 
-        // Function to start audio immediately on clicking 'Start' and move to next screen
-        function startAudioAndShowScreen(screenId) {
-            if (!audioPlayed) {
-                audio.currentTime = 4;  // Start from 4 seconds
-                audio.play(); // Play the song
-                audio.loop = false; // Prevent the song from looping
-                audioPlayed = true; // Mark as played
-            }
-            showScreen(screenId);
-        }
+        // Play audio when start button is clicked
+        startButton.addEventListener('click', () => {
+            audio.currentTime = 4; // Start audio at 4 seconds
+            audio.play();
+            screen1.classList.remove('active');
+            screen2.classList.add('active');
+        });
 
-        // Function to show the respective screen
-        function showScreen(screenId) {
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-        }
+        // Go back to the first screen
+        goBackButton.addEventListener('click', () => {
+            screen2.classList.remove('active');
+            screen1.classList.add('active');
+        });
+
+        // Auto-start the audio when the page loads (with a 1-second delay to make sure it's ready)
+        window.onload = () => {
+            setTimeout(() => {
+                audio.currentTime = 4; // Start audio at 4 seconds
+                audio.play();
+            }, 1000); // Wait for 1 second before starting the audio
+        };
     </script>
-
 </body>
 </html>
