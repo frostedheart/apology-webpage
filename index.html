@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry, Raaji</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            background: #f9f5e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .screen {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #f9f5e8;
+            transition: opacity 1s ease;
+        }
+        .screen.active {
+            display: flex;
+            opacity: 1;
+        }
+        .screen.hidden {
+            opacity: 0;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #4d4d4d;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #595959;
+            margin: 10px 0 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background: #ff1493;
+        }
+        .heart {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin-top: 20px;
+            animation: bounce 1s infinite;
+        }
+        .pigeon {
+            width: 50px;
+            animation: fly 4s infinite;
+        }
+        @keyframes fly {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, -30px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+        .dog {
+            width: 80px;
+            margin-top: 20px;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="screen active" id="screen1">
+        <h1>Raaji, I'm Truly Sorry</h1>
+        <p>I never meant to hurt you. Please forgive me for my words yesterday. You mean so much to me.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Pigeon.jpg" alt="Pigeon" class="pigeon">
+        <button onclick="nextScreen(2)">Swipe to See More</button>
+    </div>
+
+    <div class="screen" id="screen2">
+        <h1>You’re My Everything</h1>
+        <p>Your feelings matter deeply to me, and I promise to be more understanding and supportive.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Dog_icon.png" alt="Dog" class="dog">
+        <button onclick="nextScreen(3)">Next</button>
+    </div>
+
+    <div class="screen" id="screen3">
+        <h1>Our Moments Are Precious</h1>
+        <p>I cherish every moment we’ve shared, and I want to make things right with you.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Pigeon.jpg" alt="Pigeon" class="pigeon">
+        <button onclick="nextScreen(4)">Final Message</button>
+    </div>
+
+    <div class="screen" id="screen4">
+        <h1>I’m Sorry, Raaji ❤️</h1>
+        <p>Can we start fresh? I promise to always be here for you.</p>
+        <div class="heart">💖</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Dog_icon.png" alt="Dog" class="dog">
+    </div>
+
+    <script>
+        let currentScreen = 1;
+
+        function nextScreen(screenNumber) {
+            const current = document.getElementById(`screen${currentScreen}`);
+            const next = document.getElementById(`screen${screenNumber}`);
+
+            current.classList.remove('active');
+            current.classList.add('hidden');
+
+            next.classList.remove('hidden');
+            next.classList.add('active');
+
+            currentScreen = screenNumber;
+        }
+    </script>
+</body>
+</html>
