@@ -6,11 +6,11 @@
   body {
     font-family: sans-serif;
     margin: 0;
-    overflow: hidden; /* Hide scrollbars for smooth transitions */
+    overflow: hidden;
   }
 
   .screen {
-    display: none; 
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -18,43 +18,57 @@
     height: 100%;
     text-align: center;
     background-size: cover;
-    transition: opacity 1s ease-in-out; /* Add fade-in effect */
+    transition: opacity 1s ease-in-out;
   }
 
   .screen.active {
     display: block;
-    opacity: 1; /* Ensure full visibility when active */
+    opacity: 1;
   }
 
   h1 {
     color: #fff;
     margin-top: 100px;
+    text-shadow: 2px 2px 4px #000; /* Add a subtle shadow */
   }
 
   p {
     color: #fff;
     font-size: 1.2em;
     margin: 20px;
+    text-shadow: 2px 2px 4px #000;
   }
 
   button {
     padding: 10px 20px;
     font-size: 1em;
-    background-color: #f0d9b5; /* Example color, customize as you like */
+    background-color: #f0d9b5;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 2px 2px 4px #000; /* Add a button shadow */
   }
 
   /* Pigeon and dog theme styles */
   #screen1 {
-    background-image: url('https://source.unsplash.com/random/?pigeon'); /* Replace with your pigeon image */
+    background-image: url('https://source.unsplash.com/random/?pigeon,love'); 
   }
 
   #screen2 {
-    background-image: url('https://source.unsplash.com/random/?dog'); /* Replace with your dog image */
+    background-image: url('https://source.unsplash.com/random/?dog,cute'); 
   }
 
-  /* Add more styles for other screens as needed */
+  #screen3 { /* Style for the photo screen */
+    background-color: rgba(0, 0, 0, 0.7); /* Dimmed background */
+  }
+
+  #screen3 img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px; /* Add rounded corners to the image */
+    box-shadow: 5px 5px 10px #000; /* Add a shadow to the image */
+    margin-top: 50px;
+  }
 </style>
 </head>
 <body>
@@ -73,7 +87,7 @@
 
 <div class="screen" id="screen3">
   <h1>Remember This?</h1>
-  <img src="your-image.jpg" alt="Cute photo of you and Raaji"> 
+  <img src="https://via.placeholder.com/400x300" alt="Cute photo of you and Raaji"> 
   <p>This always makes me smile. We have so many amazing memories together.</p>
   <button onclick="showScreen('screen4')">Next</button>
 </div>
@@ -91,11 +105,9 @@
 
 <script>
 function showScreen(screenId) {
-  // Hide the current active screen
   const activeScreen = document.querySelector('.screen.active');
   activeScreen.classList.remove('active');
 
-  // Show the new screen
   const nextScreen = document.getElementById(screenId);
   nextScreen.classList.add('active');
 }
