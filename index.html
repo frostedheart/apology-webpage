@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+v<!DOCTYPE html>
 <html>
 <head>
 <title>I'm Sorry, Raaji</title>
@@ -26,10 +26,17 @@
     opacity: 1;
   }
 
+  .screen-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
   h1 {
     color: #fff;
-    margin-top: 100px;
-    text-shadow: 2px 2px 4px #000; /* Add a subtle shadow */
+    text-shadow: 2px 2px 4px #000;
   }
 
   p {
@@ -45,62 +52,56 @@
     background-color: #f0d9b5;
     border: none;
     cursor: pointer;
-    border-radius: 5px; /* Add rounded corners */
-    box-shadow: 2px 2px 4px #000; /* Add a button shadow */
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px; /* Add spacing above the button */
   }
 
-  /* Pigeon and dog theme styles */
   #screen1 {
+    background-color: #f0f0f0; /* Light background for the GIF */
+  }
+
+  #screen2, #screen3 {
     background-image: url('https://source.unsplash.com/random/?pigeon,love'); 
   }
 
-  #screen2 {
+  #screen4 {
     background-image: url('https://source.unsplash.com/random/?dog,cute'); 
-  }
-
-  #screen3 { /* Style for the photo screen */
-    background-color: rgba(0, 0, 0, 0.7); /* Dimmed background */
-  }
-
-  #screen3 img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px; /* Add rounded corners to the image */
-    box-shadow: 5px 5px 10px #000; /* Add a shadow to the image */
-    margin-top: 50px;
+    /* Add styles for the memories as needed */
   }
 </style>
 </head>
 <body>
 
 <div class="screen active" id="screen1">
-  <h1>I'm Truly Sorry, Raaji</h1>
-  <p>I messed up and I deeply regret hurting you with my insensitive words. I understand how much pain you're in, and I should have been more supportive.</p>
-  <button onclick="showScreen('screen2')">Next</button>
+  <div class="screen-content">
+    <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <button onclick="showScreen('screen2')">Start</button>
+  </div>
 </div>
 
 <div class="screen" id="screen2">
-  <h1>I'm Here for You</h1>
-  <p>You're my best friend, and I'll always be here to listen and support you, no matter what. Please know that your feelings are valid, and I'm here to help you through this.</p>
-  <button onclick="showScreen('screen3')">Next</button>
+  <div class="screen-content">
+    <h1>I'm Truly Sorry, Raaji</h1>
+    <p>I messed up and I deeply regret hurting you with my insensitive words yesterday. I understand how much pain you're in, and I should have been more supportive.</p>
+    <button onclick="showScreen('screen3')">Next</button>
+  </div>
 </div>
 
 <div class="screen" id="screen3">
-  <h1>Remember This?</h1>
-  <img src="https://via.placeholder.com/400x300" alt="Cute photo of you and Raaji"> 
-  <p>This always makes me smile. We have so many amazing memories together.</p>
-  <button onclick="showScreen('screen4')">Next</button>
+  <div class="screen-content">
+    <h1>You Mean the World to Me</h1>
+    <p>I cherish our friendship more than words can say. You're an amazing person, and I'm so lucky to have you in my life.</p>
+    <button onclick="showScreen('screen4')">Next</button>
+  </div>
 </div>
 
 <div class="screen" id="screen4">
-  <h1>You're Special</h1>
-  <p>I cherish our friendship more than words can say. You're an amazing person, and I'm so lucky to have you in my life.</p>
-  <button onclick="showScreen('screen5')">Next</button>
-</div>
-
-<div class="screen" id="screen5">
-  <h1>I Promise...</h1>
-  <p>To be a better listener and to always think before I speak. I'll be more mindful of your feelings and do my best to support you in the way you need.</p>
+  <div class="screen-content">
+    <h1>Our Memories</h1>
+    <p>Here are some of my favorite memories with you. They always bring a smile to my face.</p>
+    </div>
+    <button onclick="showScreen('screen1')">Go Back</button> 
 </div>
 
 <script>
