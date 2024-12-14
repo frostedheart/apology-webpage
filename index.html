@@ -3,7 +3,80 @@
 <head>
 <title>I'm Sorry, Raaji</title>
 <style>
-  /* ... (CSS from the previous response) ... */
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .screen {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-size: cover;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .screen.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .screen-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  h1 {
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+
+  p {
+    color: #fff;
+    font-size: 1.2em;
+    margin: 20px;
+    text-shadow: 2px 2px 4px #000;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #f0d9b5;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #000;
+    margin-top: 20px;
+  }
+
+  #screen1 {
+    background-color: #f0f0f0;
+  }
+
+  #screen2, #screen3 {
+    background-image: url('https://source.unsplash.com/random/?pigeon,love'); 
+  }
+
+  #screen4 {
+    background-image: url('https://source.unsplash.com/random/?dog,cute'); 
+  }
+
+  /* Add more styles for the memories as needed */
+  #screen4 img {
+    max-width: 50%;
+    height: auto;
+    margin: 20px;
+    border-radius: 10px;
+  }
 </style>
 </head>
 <body>
@@ -36,6 +109,8 @@
   <div class="screen-content">
     <h1>Our Memories</h1>
     <p>Here are some of my favorite memories with you. They always bring a smile to my face.</p>
+    <img src="memory1.jpg" alt="Memory 1"> 
+    <img src="memory2.jpg" alt="Memory 2"> 
     <button onclick="showScreen('screen1')">Go Back</button> </div>
 </div>
 
@@ -50,9 +125,9 @@
 
   function startAndShowScreen() {
     const audio = document.getElementById('myAudio');
-    audio.currentTime = 4; // Start from 4 seconds
+    audio.currentTime = 4; 
     audio.play(); 
-    showScreen('screen2'); // Go to the next screen
+    showScreen('screen2'); 
   }
 </script>
 
