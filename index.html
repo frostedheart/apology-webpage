@@ -36,13 +36,6 @@
             margin: 30px 0;
         }
 
-        img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
         .button {
             background-color: #FF6347;
             color: white;
@@ -100,19 +93,45 @@
             border-radius: 20px;
         }
 
+        /* Start Screen Styling */
+        #startScreen iframe {
+            width: 100%;
+            height: 80%;
+            border: none;
+        }
+
+        .start-button {
+            background-color: #FF6347;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .start-button:hover {
+            background-color: #FF4500;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Start Screen with Pigeon GIF -->
+    <div id="startScreen" class="screen active">
+        <div style="width:100%;height:0;padding-bottom:57%;position:relative;">
+            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </div>
+        <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf" target="_blank">via GIPHY</a></p>
+        <button class="start-button" onclick="startSong()">Start</button>
+    </div>
+
     <!-- Screen 1: Apology Message -->
-    <div id="screen1" class="screen active">
+    <div id="screen1" class="screen">
         <h1>Raaji, I'm So Sorry</h1>
         <p>Hey love, I know I messed up, and I want to sincerely apologize. I was trying to comfort you when I said something that hurt you, and I never meant to cause you any more pain.</p>
         <p>You mean so much to me, and I promise to be more thoughtful with my words in the future.</p>
-        <div class="image-container">
-            <!-- Pigeon GIF from a reliable source -->
-            <img src="https://media.giphy.com/media/vyAx2nv5IHv8IU0omN/giphy.gif" alt="Pigeon Animation" class="floating" />
-        </div>
         <button class="button" onclick="showScreen('screen2')">Next</button>
     </div>
 
@@ -121,8 +140,7 @@
         <h1>You're My Heart</h1>
         <p>Even when things are tough, I'm here for you. I care about you deeply, and I'm sorry if I made you feel otherwise.</p>
         <div class="image-container">
-            <!-- Pigeon Image from a reliable source -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Mourning_Dove_Flight.gif" alt="Pigeon" class="floating" />
+            <img src="https://i.pinimg.com/originals/f6/62/73/f66273b69807531c6ac6ae12d576b42a.jpg" alt="Pigeon" class="floating" />
         </div>
         <button class="button" onclick="showScreen('screen3')">Next</button>
     </div>
@@ -132,8 +150,7 @@
         <h1>Always Here For You</h1>
         <p>I know I can't take back what I said, but I promise I will be better. Please let me be the person you can always turn to. I love you, and I just want to make things right.</p>
         <div class="image-container">
-            <!-- Cute Dog Image -->
-            <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6" alt="Cute Dog" class="cute-dog" />
+            <img src="https://www.rd.com/wp-content/uploads/2020/10/GettyImages-1161263633.jpg" alt="Cute Dog" class="cute-dog" />
         </div>
         <button class="button" onclick="showScreen('screen1')">Go Back</button>
     </div>
@@ -149,6 +166,17 @@
                 screen.classList.remove('active');
             });
             document.getElementById(screenId).classList.add('active');
+        }
+
+        function startSong() {
+            // Play the song (Smithereens by Twenty One Pilots)
+            const audio = new Audio('https://www.youtube.com/watch?v=HYzFq4o5xtI');  // Link to the song (change this to the appropriate music file link)
+            audio.play();
+
+            // Transition to next screen after the song starts playing
+            setTimeout(() => {
+                showScreen('screen1');
+            }, 3000); // Adjust time based on when you want the next screen to appear
         }
     </script>
 
