@@ -172,15 +172,13 @@
 
         function startSong() {
             if (!audioPlayed) {
-                // Create a SoundCloud iframe embed for the song (audio only)
-                const audioEmbed = document.createElement('iframe');
-                audioEmbed.setAttribute('width', '100%');
-                audioEmbed.setAttribute('height', '166');
-                audioEmbed.setAttribute('scrolling', 'no');
-                audioEmbed.setAttribute('frameborder', 'no');
-                audioEmbed.setAttribute('allow', 'autoplay');
-                audioEmbed.setAttribute('src', 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmatt-link-484382892%2Ftwenty-one-pilots-smithereens-remix%3Fin%3Dnkosi-wkkwkw%2Fsets%2Flilli-3%26utm_source%3Dclipboard%26utm_medium%3Dtext%26utm_campaign%3Dsocial_sharing&color=%23ff6347&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false');
-                document.body.appendChild(audioEmbed);
+                // Create an audio element for the local mp3 file
+                const audio = document.createElement('audio');
+                audio.setAttribute('controls', 'false');
+                audio.setAttribute('autoplay', 'true');
+                audio.setAttribute('loop', 'false');
+                audio.innerHTML = '<source src="1.mp3" type="audio/mp3">';
+                document.body.appendChild(audio);
                 
                 // Set flag to prevent multiple plays
                 audioPlayed = true;
