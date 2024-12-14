@@ -37,7 +37,7 @@
   h1 {
     color: #fff;
     text-shadow: 2px 2px 4px #000;
-    margin-bottom: 20px; /* Add space below the heading */
+    margin-bottom: 20px;
   }
 
   p {
@@ -70,7 +70,6 @@
     background-image: url('https://source.unsplash.com/random/?dog,cute'); 
   }
 
-  /* Add more styles for the memories as needed */
   #screen4 img {
     max-width: 50%;
     height: auto;
@@ -85,7 +84,7 @@
   <div class="screen-content">
     <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
     <button onclick="startAndShowScreen()">Start</button> 
-    <audio id="myAudio" src="1.mp3" preload="auto"></audio> 
+    <audio id="myAudio" src="1.mp3" preload="metadata"></audio> 
   </div>
 </div>
 
@@ -115,6 +114,12 @@
 </div>
 
 <script>
+  const audio = document.getElementById('myAudio');
+  audio.play().then(() => {
+    audio.pause();
+    audio.currentTime = 4; 
+  });
+
   function showScreen(screenId) {
     const activeScreen = document.querySelector('.screen.active');
     activeScreen.classList.remove('active');
@@ -124,8 +129,6 @@
   }
 
   function startAndShowScreen() {
-    const audio = document.getElementById('myAudio');
-    audio.currentTime = 4; 
     audio.play(); 
     showScreen('screen2'); 
   }
