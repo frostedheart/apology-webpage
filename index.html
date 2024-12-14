@@ -1,165 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apology Webpage</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
-            background: url('https://images.unsplash.com/photo-1506765515456-e0cb3e5d162b') no-repeat center center fixed;
-            background-size: cover;
-        }
+<title>I'm Sorry, Raaji</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars for smooth transitions */
+  }
 
-        .screen {
-            display: none; /* Hide screens by default */
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+  .screen {
+    display: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-size: cover;
+    transition: opacity 1s ease-in-out; /* Add fade-in effect */
+  }
 
-        .screen.active {
-            display: flex; /* Display screen when it's active */
-        }
+  .screen.active {
+    display: block;
+    opacity: 1; /* Ensure full visibility when active */
+  }
 
-        .centered-iframe {
-            margin: auto;
-            display: block;
-            max-width: 100%;
-            max-height: 80%;
-        }
+  h1 {
+    color: #fff;
+    margin-top: 100px;
+  }
 
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            font-size: 20px;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
+  p {
+    color: #fff;
+    font-size: 1.2em;
+    margin: 20px;
+  }
 
-        .button:hover {
-            background-color: #45a049;
-        }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #f0d9b5; /* Example color, customize as you like */
+    border: none;
+    cursor: pointer;
+  }
 
-        .go-back {
-            background-color: #f44336;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            font-size: 20px;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
+  /* Pigeon and dog theme styles */
+  #screen1 {
+    background-image: url('https://source.unsplash.com/random/?pigeon'); /* Replace with your pigeon image */
+  }
 
-        .go-back:hover {
-            background-color: #e60000;
-        }
+  #screen2 {
+    background-image: url('https://source.unsplash.com/random/?dog'); /* Replace with your dog image */
+  }
 
-        .audio {
-            display: none; /* Hide the audio controls */
-        }
-
-        .dog-garden {
-            background: url('https://images.unsplash.com/photo-1586940133033-3fd7e69adf2b') no-repeat center center fixed;
-            background-size: cover;
-        }
-    </style>
+  /* Add more styles for other screens as needed */
+</style>
 </head>
 <body>
-    <!-- Screen 1: GIF with Start Button -->
-    <div id="screen1" class="screen active">
-        <div>
-            <iframe src="https://giphy.com/embed/6m6xwSSQEORbLsqmOf" width="480" height="274" class="centered-iframe" frameborder="0" allowfullscreen></iframe>
-            <p><a href="https://giphy.com/gifs/MoWillems-pigeon-mowillems-thepigeon-6m6xwSSQEORbLsqmOf">via GIPHY</a></p>
-            <button class="button" id="startButton">Start</button>
-        </div>
-    </div>
 
-    <!-- Screen 2: Apology Message -->
-    <div id="screen2" class="screen">
-        <div>
-            <h1>I'm Sorry, Raaji</h1>
-            <p>I truly value you, and I was wrong in how I spoke to you.</p>
-            <button class="go-back" id="goBackButton">Go Back</button>
-        </div>
-    </div>
+<div class="screen active" id="screen1">
+  <h1>I'm Truly Sorry, Raaji</h1>
+  <p>I messed up and I deeply regret hurting you with my insensitive words. I understand how much pain you're in, and I should have been more supportive.</p>
+  <button onclick="showScreen('screen2')">Next</button>
+</div>
 
-    <!-- Screen 3: Dog & Garden -->
-    <div id="screen3" class="screen dog-garden">
-        <div>
-            <h1>Gardening & Dogs</h1>
-            <p>These things always bring me joy when I'm thinking about you.</p>
-            <button class="button" id="nextButton">Next</button>
-        </div>
-    </div>
+<div class="screen" id="screen2">
+  <h1>I'm Here for You</h1>
+  <p>You're my best friend, and I'll always be here to listen and support you, no matter what. Please know that your feelings are valid, and I'm here to help you through this.</p>
+  <button onclick="showScreen('screen3')">Next</button>
+</div>
 
-    <!-- Screen 4: Final Apology -->
-    <div id="screen4" class="screen">
-        <div>
-            <h1>Final Words</h1>
-            <p>I care about you so much, and I will always support you.</p>
-            <button class="go-back" id="goBackButton2">Go Back</button>
-        </div>
-    </div>
+<div class="screen" id="screen3">
+  <h1>Remember This?</h1>
+  <img src="your-image.jpg" alt="Cute photo of you and Raaji"> 
+  <p>This always makes me smile. We have so many amazing memories together.</p>
+  <button onclick="showScreen('screen4')">Next</button>
+</div>
 
-    <!-- Audio -->
-    <audio id="audio" class="audio" preload="auto">
-        <source src="1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
+<div class="screen" id="screen4">
+  <h1>You're Special</h1>
+  <p>I cherish our friendship more than words can say. You're an amazing person, and I'm so lucky to have you in my life.</p>
+  <button onclick="showScreen('screen5')">Next</button>
+</div>
 
-    <script>
-        const startButton = document.getElementById('startButton');
-        const audio = document.getElementById('audio');
-        const screen1 = document.getElementById('screen1');
-        const screen2 = document.getElementById('screen2');
-        const screen3 = document.getElementById('screen3');
-        const screen4 = document.getElementById('screen4');
-        const goBackButton = document.getElementById('goBackButton');
-        const goBackButton2 = document.getElementById('goBackButton2');
-        const nextButton = document.getElementById('nextButton');
+<div class="screen" id="screen5">
+  <h1>I Promise...</h1>
+  <p>To be a better listener and to always think before I speak. I'll be more mindful of your feelings and do my best to support you in the way you need.</p>
+</div>
 
-        // Play audio automatically at 4 seconds when page loads
-        window.onload = () => {
-            audio.currentTime = 4; // Start the audio at 4 seconds
-            audio.play();
-        };
+<script>
+function showScreen(screenId) {
+  // Hide the current active screen
+  const activeScreen = document.querySelector('.screen.active');
+  activeScreen.classList.remove('active');
 
-        // Start button - Move to next screen
-        startButton.addEventListener('click', () => {
-            screen1.classList.remove('active');
-            screen2.classList.add('active');
-        });
+  // Show the new screen
+  const nextScreen = document.getElementById(screenId);
+  nextScreen.classList.add('active');
+}
+</script>
 
-        // Go Back button (from screen 2) - Return to screen 1
-        goBackButton.addEventListener('click', () => {
-            screen2.classList.remove('active');
-            screen1.classList.add('active');
-        });
-
-        // Next button - Move to screen 3
-        nextButton.addEventListener('click', () => {
-            screen3.classList.add('active');
-            screen2.classList.remove('active');
-        });
-
-        // Go Back button (from screen 4) - Return to screen 3
-        goBackButton2.addEventListener('click', () => {
-            screen4.classList.remove('active');
-            screen3.classList.add('active');
-        });
-    </script>
 </body>
 </html>
