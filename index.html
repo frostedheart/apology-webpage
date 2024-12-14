@@ -1,54 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apology to Raaji</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f8ff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology for Raaji</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-    header {
-      text-align: center;
-      background-color: #ffcccb;
-      padding: 20px;
-      font-size: 1.5em;
-    }
+        h1 {
+            font-size: 2.5em;
+            color: #FF6347;
+            margin: 20px 0;
+        }
 
-    .pigeon {
-      width: 150px;
-      position: absolute;
-      top: 50px;
-      left: 20%;
-      animation: fly 5s infinite ease-in-out;
-    }
+        p {
+            font-size: 1.2em;
+            color: #444;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
 
-    .dog {
-      width: 200px;
-      position: absolute;
-      bottom: 20px;
-      right: 10%;
-    }
+        .image-container {
+            margin: 30px 0;
+        }
 
-    @keyframes fly {
-      0% { transform: translate(0, 0); }
-      50% { transform: translate(50px, -100px); }
-      100% { transform: translate(0, 0); }
-    }
-  </style>
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            background-color: #FF6347;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            background-color: #FF4500;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .footer a {
+            color: #FF6347;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pigeon and Dog Animations */
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .floating {
+            animation: floatAnimation 2s ease-in-out infinite;
+        }
+
+        .cute-dog {
+            max-width: 60%;
+            border-radius: 20px;
+        }
+
+    </style>
 </head>
 <body>
-  <header>Raaji, I am deeply sorry 💖</header>
-  <main>
-    <p style="text-align: center; font-size: 1.2em;">
-      You mean the world to me, and I hope this little page brightens your day. 🕊️🐶
-    </p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Pigeon.jpg" alt="Flying Pigeon" class="pigeon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Golde33443.jpg" alt="Cute Dog" class="dog">
-  </main>
+
+    <!-- Screen 1: Apology Message -->
+    <div id="screen1" class="screen active">
+        <h1>Raaji, I'm So Sorry</h1>
+        <p>Hey love, I know I messed up, and I want to sincerely apologize. I was trying to comfort you when I said something that hurt you, and I never meant to cause you any more pain.</p>
+        <p>You mean so much to me, and I promise to be more thoughtful with my words in the future.</p>
+        <div class="image-container">
+            <img src="https://media.giphy.com/media/d2jjuAZz1b4A7vH6/giphy.gif" alt="Pigeon Animation" class="floating" />
+        </div>
+        <button class="button" onclick="showScreen('screen2')">Next</button>
+    </div>
+
+    <!-- Screen 2: Cute Pigeon Image and Message -->
+    <div id="screen2" class="screen">
+        <h1>You're My Heart</h1>
+        <p>Even when things are tough, I'm here for you. I care about you deeply, and I'm sorry if I made you feel otherwise.</p>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1563201513-68b63e20c0f7" alt="Pigeon" class="floating" />
+        </div>
+        <button class="button" onclick="showScreen('screen3')">Next</button>
+    </div>
+
+    <!-- Screen 3: Final Apology and Promise -->
+    <div id="screen3" class="screen">
+        <h1>Always Here For You</h1>
+        <p>I know I can't take back what I said, but I promise I will be better. Please let me be the person you can always turn to. I love you, and I just want to make things right.</p>
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1562167635-357e537f9029" alt="Cute Dog" class="cute-dog" />
+        </div>
+        <button class="button" onclick="showScreen('screen1')">Go Back</button>
+    </div>
+
+    <div class="footer">
+        <p>Made with <span style="color: red;">❤️</span> for you, Raaji. <a href="https://vercel.com" target="_blank">Vercel Hosting</a></p>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
